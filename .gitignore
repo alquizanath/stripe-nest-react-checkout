@@ -1,0 +1,47 @@
+# .gitignore
+
+# Root .gitignore
+
+**/dist/
+# Ignore node_modules in both frontend and backend
+**/node_modules/
+
+# Ignore env files for both frontend and backend
+**/.env
+
+# Ignore lockfiles if you don’t want to track them
+# (optional, but usually backends want to track it)
+**/pnpm-lock.yaml
+**/package-lock.json
+**/yarn.lock
+
+# Ignore IDE/editor configs
+.vscode/
+.DS_Store
+
+# Node
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+
+# TypeScript
+*.tsbuildinfo
+
+# Docker
+docker-data/
+cockroach-data
