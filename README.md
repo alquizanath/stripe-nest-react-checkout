@@ -26,7 +26,7 @@ A full-stack example of integrating **Stripe payments** with a **NestJS backend*
 ### 1️⃣ Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/stripe-nest-react-checkout.git
+git clone https://github.com/alquizanath/stripe-nest-react-checkout.git
 cd stripe-nest-react-checkout
 ```
 
@@ -55,8 +55,6 @@ npm install
 | DATABASE_URL           | backend    | Prisma database connection URL  |
 | VITE_STRIPE_PUBLISHABLE_KEY | frontend | Your Stripe publishable key     |
 | VITE_BACKEND_URL       | frontend   | URL of your NestJS backend      |
-
----
 
 ---
 
