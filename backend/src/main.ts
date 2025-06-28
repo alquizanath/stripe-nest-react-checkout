@@ -1,6 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import bodyParser from "body-parser";
+import { ConfigService } from "@nestjs/config";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -8,9 +9,16 @@ async function bootstrap() {
     bodyParser: true,
   });
 
+  const configService: ConfigService<Record<string, unknown>, true> = app.get(
+    ConfigService
+  );
+
+  const corsOrigin = configService.get("CORS_ORIGIN");
+
   app.enableCors({
-    origin: "http://localhost:3000",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     credentials: true,
+    origin: corsOrigin ? corsOrigin.split(",") : [],
   });
 
   app.use("/webhooks/stripe", bodyParser.raw({ type: "application/json" }));

@@ -44,6 +44,16 @@ export class StripeWebhookService {
         where: { code: orderCode },
         data: { status: "FAILED" },
       });
+    } else if (event.type === "payment_intent.canceled") {
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      const orderCode = paymentIntent.metadata.orderCode;
+
+      this.logger.warn(`Payment canceled for orderCode=${orderCode}`);
+
+      await this.prisma.order.updateMany({
+        where: { code: orderCode },
+        data: { status: "CANCELED" },
+      });
     } else {
       this.logger.log(`Unhandled event type: ${event.type}`);
     }

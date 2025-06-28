@@ -19,8 +19,9 @@ export class PaymentsService {
 
     const paymentIntent = await this.stripe.paymentIntents.create({
       amount,
-      currency: "php",
+      currency: "usd",
       metadata: { orderCode },
+      automatic_payment_methods: { enabled: true },
     });
 
     await this.prisma.order.update({
